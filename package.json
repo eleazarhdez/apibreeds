@@ -1,0 +1,26 @@
+{
+  "name": "api-zooplus",
+  "version": "1.0.0",
+  "description": "Endpoint to return breeds with more than given vocals in their breed name with their associated image",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eleazarhdez/eleazar-borja.git"
+  },
+  "author": "Eleazar Hernández",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eleazarhdez/eleazar-borja/issues"
+  },
+  "homepage": "https://github.com/eleazarhdez/eleazar-borja#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
