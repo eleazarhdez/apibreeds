@@ -5,7 +5,7 @@ const buildImageUrl = (breed) => {
   return `https://dog.ceo/api/breed/${breed}/images/random`;
 }
 
-const buildGetDataFromUrl = async(breed) => {
+const buildDataFromUrl = async(breed) => {
   const url = buildImageUrl(breed);
   return new Promise((resolve, reject) => {
     axios.get(url)
@@ -19,12 +19,16 @@ const buildGetDataFromUrl = async(breed) => {
   })
 }
 
-const buildGetDataFromUrlMemoize = memoizee(buildGetDataFromUrl, { promise: true });
+const buildDataFromUrlMemoize = memoizee(buildDataFromUrl, { promise: true });
 
 const getImagesUrls = async (breeds) => {
-  const breedsImagesPromises = breeds.map(buildGetDataFromUrlMemoize);
-  const urls = await Promise.all(breedsImagesPromises);
-  return urls;
+  const breedsImagesPromises = breeds.map(buildDataFromUrlMemoize);
+  const breedsWithImagesURL = await Promise.all(breedsImagesPromises);
+  return breedsWithImagesURL;
 }
 
-module.exports = getImagesUrls;
+module.exports = {
+  buildImageUrl,
+  buildDataFromUrl,
+  getImagesUrls
+}
